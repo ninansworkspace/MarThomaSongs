@@ -1,152 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maramon Convention Songs 2025</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>🎵 Maramon Convention Songs 2023</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <style>
-        body {
-            background: url('https://static7.depositphotos.com/1288351/769/i/450/depositphotos_7690115-stock-photo-three-crosses-on-vintage-background.jpg') no-repeat center center/cover;
-            font-family: 'Georgia', serif;
-            color: #5a1a1a;
-        }
-        .navbar {
-            background: rgba(139, 0, 0, 0.9);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid #d2b48c;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .navbar a {
-            color: white;
-            font-size: 1.2em;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-        .navbar a:hover {
-            color: #ffd700;
-        }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
 
-        .overlay {
-            background: rgba(255, 245, 230, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-            max-width: 650px;
-            margin: 60px auto;
-            text-align: center;
-            border: 2px solid #8b0000;
-        }
-        h2 {
-            color: #8b0000;
-            font-family: 'Garamond', serif;
-            font-weight: bold;
-        }
-        #search {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #8b0000;
-            outline: none;
-            text-align: center;
-            font-size: 16px;
-            background: #f7e6d7;
-            color: #5a1a1a;
-        }
-        .list-group-item {
-            background: #fdf5e6;
-            color: #5a1a1a;
-            border: 1px solid #d2b48c;
-            transition: background 0.3s, transform 0.2s;
-            font-family: 'Times New Roman', serif;
-        }
-        .list-group-item:hover {
-            background: #e3cfa7;
-            transform: scale(1.03);
-        }
-        .song-list a {
-            text-decoration: none;
-            color: #8b0000;
-            font-weight: bold;
-        }
-        .song-list a:hover {
-            color: #b22222;
-        }
-    </style>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding-top: 70px;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #4a148c !important;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      color: #4a148c !important;
+    }
+
+    .container-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 850px;
+      margin: 30px auto;
+    }
+
+    h3 {
+      text-align: center;
+      color: #4a148c;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    #search {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    .list-group-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      transition: 0.2s ease;
+    }
+
+    .list-group-item:hover {
+      background: #f8f9fa;
+    }
+
+    .song-title {
+      font-weight: 500;
+      color: #4a148c;
+    }
+
+    .btn-open {
+      background-color: #6f42c1;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .btn-open:hover {
+      background-color: #502d9c;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #333;
+      padding: 1rem;
+      background: rgba(255,255,255,0.8);
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="nav-links">
-            <a href="Musicplayer.html">Home</a>
-            <a href="Musicplayer.html">Songs</a>
-            <a href="about.html">About</a>
-        </div>
+
+<!-- NAVBAR -->
+<nav class="navbar fixed-top navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">🎶 Maramon Songs 2023</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="https://ninansworkspace.github.io/MarThomaPowefulTools/">ToolHome</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html">Song Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://ninansworkspace.github.io/MaramonConventionPPTSongs-/">Maramon Convention PPT</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://ninansworkspace.github.io/Kristheeya-Keerthanangal/">Kristheeya Keerthanangal</a></li>
+      </ul>
     </div>
-    <div class="overlay">
-        <h2>🎵 Maramon Convention Songs 2023 🎶</h2>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Search by song name or number..." onkeyup="searchSongs()">
-        </div>
-        <ul class="list-group song-list">
-            
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1ky2AversbAbq765rBziFUBmHtXUhHgBL/view?usp=drivesdk" target="_blank">001 Introduction.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1VB29EWKYcdZewmwgQbjU3cf3gn33IrgR/view?usp=drivesdk" target="_blank">002 Sthuthiku Yogyanvan.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1UOHZtSFSSaur1gwVp8NQbP-ivzAWQjso/view?usp=drivesdk" target="_blank">003 Nadhan Varum.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1n6H-owfo-cG83RtRtftsgX2bGz_H5UDc/view?usp=drivesdk" target="_blank">004 Ashrayippanoru.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1pB9JXPLZj5sJvYbMFrK3xmIrqSmCLU-z/view?usp=drivesdk" target="_blank">005 Njanum Kudumbavum.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1m0h6J5YJEZ9IXaJJ8QI1RiLl6KIm39rk/view?usp=drivesdk" target="_blank">006 Vachanam.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1RDvLNv31iKIdIoy8tQOL7Mt1BFeqINiC/view?usp=drivesdk" target="_blank">007 Manamuruki.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1RKPBoLerGTJe9CKnDKyE-YORz6Rm6TSC/view?usp=drivesdk" target="_blank">008 Thamase.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/15O6j8OXLhwALWy4YE0JGUkahVdnuGkNq/view?usp=drivesdk" target="_blank">009 Yesuvente.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1SaEbJhgAd3zr6YSrZ3Vnu5c5f9kFJBLB/view?usp=drivesdk" target="_blank">010 Aanandham.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1LreStemtVjiH-WOLDvZ41mxW8oktjMLw/view?usp=drivesdk" target="_blank">011 Entte Kannuneer.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1wDDAlQ53jjuV6vSdbF81jSu6UiN2UOdD/view?usp=drivesdk" target="_blank">012 Oro Ravum.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/1Ua-2ZqORNu50p6m6x8ATQbJSwTN3g9ph/view?usp=drivesdk" target="_blank">013 Nanmakal Ennum.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/16bDbCcNHEK7Z3OJ1zUA80pHyeEwnJQys/view?usp=drivesdk" target="_blank">014 Ezhunneelkkaam.mp3</a></li>
-            <li class="list-group-item"><a href="https://drive.google.com/file/d/11UZ4QQYurLJ7Zzdx2IgxqGkfputN6p5Z/view?usp=drivesdk" target="_blank">015 Malpreeyan Yesu Vararaayi.mp3</a></li>
+  </div>
+</nav>
 
+<!-- MAIN CONTENT -->
+<div class="container-box">
+  <h3>🎵 Maramon Convention Songs 2023 🎶</h3>
+  <input type="text" id="search" placeholder="Search by song name or number..." onkeyup="renderSongs()" />
 
+  <ul class="list-group mt-3" id="songList"></ul>
+</div>
 
+<!-- FOOTER -->
+<footer>
+  © 2025 Ninans WorkSpace. All rights reserved.
+</footer>
 
+<!-- JS -->
+<script>
+  const songs = [
+    { title: "Introduction.mp3", url: "https://drive.google.com/file/d/1ky2AversbAbq765rBziFUBmHtXUhHgBL/view?usp=drivesdk" },
+    { title: "Sthuthiku Yogyanvan.mp3", url: "https://drive.google.com/file/d/1VB29EWKYcdZewmwgQbjU3cf3gn33IrgR/view?usp=drivesdk" },
+    { title: "Nadhan Varum.mp3", url: "https://drive.google.com/file/d/1UOHZtSFSSaur1gwVp8NQbP-ivzAWQjso/view?usp=drivesdk" },
+    { title: "Ashrayippanoru.mp3", url: "https://drive.google.com/file/d/1n6H-owfo-cG83RtRtftsgX2bGz_H5UDc/view?usp=drivesdk" },
+    { title: "Njanum Kudumbavum.mp3", url: "https://drive.google.com/file/d/1pB9JXPLZj5sJvYbMFrK3xmIrqSmCLU-z/view?usp=drivesdk" },
+    { title: "Vachanam.mp3", url: "https://drive.google.com/file/d/1m0h6J5YJEZ9IXaJJ8QI1RiLl6KIm39rk/view?usp=drivesdk" },
+    { title: "Manamuruki.mp3", url: "https://drive.google.com/file/d/1RDvLNv31iKIdIoy8tQOL7Mt1BFeqINiC/view?usp=drivesdk" },
+    { title: "Thamase.mp3", url: "https://drive.google.com/file/d/1RKPBoLerGTJe9CKnDKyE-YORz6Rm6TSC/view?usp=drivesdk" },
+    { title: "Yesuvente.mp3", url: "https://drive.google.com/file/d/15O6j8OXLhwALWy4YE0JGUkahVdnuGkNq/view?usp=drivesdk" },
+    { title: "Aanandham.mp3", url: "https://drive.google.com/file/d/1SaEbJhgAd3zr6YSrZ3Vnu5c5f9kFJBLB/view?usp=drivesdk" },
+    { title: "Entte Kannuneer.mp3", url: "https://drive.google.com/file/d/1LreStemtVjiH-WOLDvZ41mxW8oktjMLw/view?usp=drivesdk" },
+    { title: "Oro Ravum.mp3", url: "https://drive.google.com/file/d/1wDDAlQ53jjuV6vSdbF81jSu6UiN2UOdD/view?usp=drivesdk" },
+    { title: "Nanmakal Ennum.mp3", url: "https://drive.google.com/file/d/1Ua-2ZqORNu50p6m6x8ATQbJSwTN3g9ph/view?usp=drivesdk" },
+    { title: "Ezhunneelkkaam.mp3", url: "https://drive.google.com/file/d/16bDbCcNHEK7Z3OJ1zUA80pHyeEwnJQys/view?usp=drivesdk" },
+    { title: "Malpreeyan Yesu Vararaayi.mp3", url: "https://drive.google.com/file/d/11UZ4QQYurLJ7Zzdx2IgxqGkfputN6p5Z/view?usp=drivesdk" }
+  ];
 
+  function renderSongs() {
+    const input = document.getElementById("search").value.toLowerCase();
+    const list = document.getElementById("songList");
+    list.innerHTML = "";
 
+    songs.forEach((song, index) => {
+      if (song.title.toLowerCase().includes(input)) {
+        const li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
 
-        </ul>
-    </div>
+        li.innerHTML = `
+          <span class="song-title">${String(index + 1).padStart(3, '0')}. ${song.title}</span>
+          <a class="btn-open" href="${song.url}" target="_blank">▶️</a>
+        `;
+        list.appendChild(li);
+      }
+    });
+  }
 
-    <script>
-        function searchSongs() {
-            let input = document.getElementById("search").value.toLowerCase();
-            let items = document.querySelectorAll(".list-group-item");
-    
-            items.forEach(item => {
-                let text = item.textContent.toLowerCase();
-                if (text.includes(input)) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        }
-    </script>
-    
-    <!-- Bootstrap JS (Optional for interactive components) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  renderSongs(); // Initial load
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

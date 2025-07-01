@@ -11,9 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     body {
@@ -104,7 +103,7 @@
 <!-- Navbar -->
 <nav class="navbar fixed-top navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#">🎵 Maramon Songs</a>
+    <a class="navbar-brand" href="#">🎵 Maramon Songs 2025</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -122,6 +121,12 @@
 <!-- Content -->
 <div class="container-box">
   <h2 class="text-center mb-4">🎶 Maramon Songs 2025 </h2>
+
+  <!-- Search Bar -->
+  <div class="mb-3">
+    <input type="text" id="searchBar" class="form-control" placeholder="Search for a song..." oninput="handleSearch()" />
+  </div>
+
   <div id="loader">Loading songs...</div>
   <div id="song-list" class="mb-4"></div>
   <nav>
@@ -137,17 +142,19 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Script to Load Songs from Google Sheet -->
+<!-- Script -->
 <script>
   const apiUrl = "https://script.google.com/macros/s/AKfycbwKh_yxn9O5cxYeV6B1TnLJ0-UsxhDvEQrRtcGnUbOuBQNwz4uBm-eWZgPhZ8ZAaYcf6Q/exec";
   const songsPerPage = 10;
   let allSongs = [];
+  let filteredSongs = [];
   let currentPage = 1;
 
   fetch(apiUrl)
     .then(res => res.json())
     .then(data => {
       allSongs = data.data;
+      filteredSongs = [...allSongs];
       document.getElementById('loader').style.display = 'none';
       renderSongs();
       renderPagination();
@@ -156,7 +163,7 @@
   function renderSongs() {
     const start = (currentPage - 1) * songsPerPage;
     const end = start + songsPerPage;
-    const songsToDisplay = allSongs.slice(start, end);
+    const songsToDisplay = filteredSongs.slice(start, end);
 
     const listContainer = document.getElementById('song-list');
     listContainer.innerHTML = "";
@@ -182,17 +189,38 @@
       songItem.appendChild(link);
       listContainer.appendChild(songItem);
     });
+
+    document.getElementById('pagination').style.display =
+      filteredSongs.length > songsPerPage ? 'flex' : 'none';
   }
 
   function renderPagination() {
-    const totalPages = Math.ceil(allSongs.length / songsPerPage);
+    const totalPages = Math.ceil(filteredSongs.length / songsPerPage);
     const pagination = document.getElementById('pagination');
     pagination.innerHTML = "";
 
+    // Prev
+    const prevLi = document.createElement('li');
+    prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+    const prevA = document.createElement('a');
+    prevA.className = 'page-link';
+    prevA.href = "#";
+    prevA.innerText = "Prev";
+    prevA.onclick = (e) => {
+      e.preventDefault();
+      if (currentPage > 1) {
+        currentPage--;
+        renderSongs();
+        renderPagination();
+      }
+    };
+    prevLi.appendChild(prevA);
+    pagination.appendChild(prevLi);
+
+    // Pages
     for (let i = 1; i <= totalPages; i++) {
       const li = document.createElement('li');
       li.className = `page-item ${i === currentPage ? 'active' : ''}`;
-
       const a = document.createElement('a');
       a.className = 'page-link';
       a.href = "#";
@@ -203,10 +231,37 @@
         renderSongs();
         renderPagination();
       };
-
       li.appendChild(a);
       pagination.appendChild(li);
     }
+
+    // Next
+    const nextLi = document.createElement('li');
+    nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+    const nextA = document.createElement('a');
+    nextA.className = 'page-link';
+    nextA.href = "#";
+    nextA.innerText = "Next";
+    nextA.onclick = (e) => {
+      e.preventDefault();
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderSongs();
+        renderPagination();
+      }
+    };
+    nextLi.appendChild(nextA);
+    pagination.appendChild(nextLi);
+  }
+
+  function handleSearch() {
+    const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+    filteredSongs = allSongs.filter(song =>
+      song.Title.toLowerCase().includes(searchTerm)
+    );
+    currentPage = 1;
+    renderSongs();
+    renderPagination();
   }
 </script>
 </body>

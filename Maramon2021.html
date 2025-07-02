@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎵 Maramon Convention Songs 2021</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding-top: 70px;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.4rem;
+      color: #4a148c !important;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      color: #4a148c !important;
+    }
+
+    .container-box {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 1.5rem;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 850px;
+      margin: 20px auto;
+    }
+
+    h3 {
+      text-align: center;
+      color: #4a148c;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+
+    #search {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .list-group-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .song-title {
+      font-weight: 500;
+      color: #4a148c;
+      margin-bottom: 8px;
+      word-break: break-word;
+    }
+
+    .btn {
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #333;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.8);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 576px) {
+      .container-box {
+        margin: 15px 10px;
+        padding: 1rem;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar fixed-top navbar-expand-lg">
+  <div class="container-fluid px-3">
+    <a class="navbar-brand" href="#">🎶 Maramon Songs 2021</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="https://ninansworkspace.github.io/MarThomaPowefulTools/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="https://ninansworkspace.github.io/Kristheeya-Keerthanangal/">Kristheeya Keerthanangal</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://ninansworkspace.github.io/MaramonConventionPPTSongs-/">Maramon Convention</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://ninansworkspace.github.io/MarThomaSongs/">Mar Thoma Tracks</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="container-box">
+  <h3>🎵 Maramon Convention Songs 2021 🎶</h3>
+  <input type="text" id="search" placeholder="Search by song name or number..." onkeyup="renderSongs()" />
+
+  <ul class="list-group mt-3" id="songList"></ul>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 Ninans WorkSpace. All rights reserved.
+</footer>
+
+<!-- JS -->
+<script>
+  const songs = [
+    { title: "11 Karuthunnen Nathan.mp3", url: "https://drive.google.com/file/d/10vQNx1f2oWDNjrX1Gyi7TPrbqe5tVXS2/view?usp=drivesdk" },
+    { title: "10 Yeshuvin Sneham Nithyam.mp3", url: "https://drive.google.com/file/d/1_iVweM-qQOFk1WWrYwpWpzoqKsGAAGnJ/view?usp=drivesdk" },
+    { title: "09 Inneyolam Thiru Sabhaye.mp3", url: "https://drive.google.com/file/d/1G5p6XJQFmOQJjI2jB4kVooB-HxgZcw_P/view?usp=drivesdk" },
+    { title: "08 Yeshuveppolen Snehicheedaan.mp3", url: "https://drive.google.com/file/d/1fCoUlkd212aAil9totuI38U0Er229sJH/view?usp=drivesdk" },
+    { title: "07 Novukal Nirayum.mp3", url: "https://drive.google.com/file/d/1uoqQ-LHjVa22YlpehVZAFa5qFLK-QMUz/view?usp=drivesdk" },
+    { title: "06 Thalaraathe Maname.mp3", url: "https://drive.google.com/file/d/13W2EjQm7bjcBZBtTJBnsDd1-8OU_r-mN/view?usp=drivesdk" },
+    { title: "05 Threeyeka Daivame.mp3", url: "https://drive.google.com/file/d/1xaO8upc5SyN-3dRW8fXfeHMSNyUgxEYX/view?usp=drivesdk" },
+    { title: "04 Karuthalin Karangalen.mp3", url: "https://drive.google.com/file/d/1kOqj4mI6Y3nw6O9wGJMFYF6BtsUGxk_w/view?usp=drivesdk" },
+    { title: "03 Akalaruthe Natha En.mp3", url: "https://drive.google.com/file/d/1HqKhx9mQdIxJwy4NRTPOolrWI5dmh1vQ/view?usp=drivesdk" },
+  ];
+
+  function renderSongs() {
+    const input = document.getElementById("search").value.toLowerCase();
+    const list = document.getElementById("songList");
+    list.innerHTML = "";
+
+    songs.forEach((song) => {
+      if (song.title.toLowerCase().includes(input)) {
+        const li = document.createElement("li");
+        li.className = "list-group-item";
+
+        li.innerHTML = `
+          <span class="song-title">${song.title}</span>
+          <a class="btn btn-primary w-100" href="${song.url}" target="_blank">Open</a>
+        `;
+        list.appendChild(li);
+      }
+    });
+  }
+
+  renderSongs(); // Initial load
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -2,8 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🎵 Kristeya Keerthanagal</title>
+  <title>🎵 Kristheeya Keerthanangal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Browse and access Kristheeya Keerthanangal Malayalam Christian song tracks with search and pagination." />
+  <meta name="keywords" content="Kristheeya Keerthanangal, Malayalam Christian Songs, Christian Tracks, Song List, Gospel Songs, Ninans Workspace" />
+  <meta name="author" content="Ninans WorkSpace" />
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="🎵 Kristheeya Keerthanangal Tracks" />
+  <meta property="og:description" content="Access a searchable and categorized list of Malayalam Christian songs from Kristheeya Keerthanangal." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ninansworkspace.github.io/Kristheeya-Keerthanangal/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1400&q=80" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🎵 Kristheeya Keerthanangal Tracks" />
+  <meta name="twitter:description" content="Discover a collection of Malayalam Christian songs. Search and explore Kristheeya Keerthanangal." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1400&q=80" />
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -14,8 +32,11 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-image: url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1400&q=80');
+      background-repeat: no-repeat;
+      background-position: center top;
       background-size: cover;
+      background-attachment: scroll; /* Ensures visibility on mobile */
       margin: 0;
       padding-top: 70px;
     }
@@ -108,15 +129,36 @@
       text-decoration: none;
       font-size: 0.85rem;
       margin-top: 10px;
+      width: 100%;
+      text-align: center;
     }
 
     .btn-open:hover {
       background-color: #502d9c;
     }
 
+    @media (min-width: 576px) {
+      .btn-open {
+        width: auto;
+      }
+    }
+
     .pagination {
+      flex-wrap: wrap;
+      gap: 0.4rem;
       justify-content: center;
       margin-top: 20px;
+    }
+
+    .page-link {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 576px) {
+      .pagination {
+        font-size: 0.8rem;
+      }
     }
 
     footer {
@@ -134,14 +176,14 @@
 <!-- NAVBAR -->
 <nav class="navbar fixed-top navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#">🎶 Kristeya Keerthanagal Tracks</a>
+    <a class="navbar-brand" href="#">🎶 Kristheeya Keerthanangal Tracks</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link active" href="https://ninansworkspace.github.io/MarThomaPowefulTools/">Home</a></li>
-         <li class="nav-item"><a class="nav-link active" href="https://ninansworkspace.github.io/Kristheeya-Keerthanangal/">Kristheeya Keerthanangal</a></li>
+        <li class="nav-item"><a class="nav-link active" href="https://ninansworkspace.github.io/Kristheeya-Keerthanangal/">Kristheeya Keerthanangal</a></li>
         <li class="nav-item"><a class="nav-link" href="https://ninansworkspace.github.io/MaramonConventionPPTSongs-/">Maramon Convention</a></li>
         <li class="nav-item"><a class="nav-link" href="https://ninansworkspace.github.io/MarThomaSongs/">Mar Thoma Tracks</a></li>
       </ul>
@@ -151,7 +193,7 @@
 
 <!-- MAIN CONTENT -->
 <div class="container-box">
-  <h3>🎵 Kristeya Keerthanagal Tracks 🎶</h3>
+  <h3>🎵 Kristheeya Keerthanangal Tracks 🎶</h3>
   <input type="text" id="search" placeholder="Search by song name..." onkeyup="filterSongs()">
 
   <ul class="list-group mt-3" id="songList">
@@ -218,22 +260,39 @@
     const pagination = document.getElementById("pagination");
     pagination.innerHTML = '';
 
-    pagination.innerHTML += `
-      <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-        <a class="page-link" href="#" onclick="changePage(${currentPage - 1}); return false;">Previous</a>
+    const createPageItem = (pageNum, isActive = false) => `
+      <li class="page-item ${isActive ? 'active' : ''}">
+        <a class="page-link" href="#" onclick="changePage(${pageNum}); return false;">${pageNum}</a>
       </li>
     `;
 
-    for (let i = 1; i <= totalPages; i++) {
-      pagination.innerHTML += `
-        <li class="page-item ${i === currentPage ? 'active' : ''}">
-          <a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a>
-        </li>`;
+    const addEllipsis = () => `
+      <li class="page-item disabled"><span class="page-link">…</span></li>
+    `;
+
+    pagination.innerHTML += `
+      <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+        <a class="page-link" href="#" onclick="changePage(${currentPage - 1}); return false;">« Prev</a>
+      </li>
+    `;
+
+    pagination.innerHTML += createPageItem(1, currentPage === 1);
+
+    if (currentPage > 4) pagination.innerHTML += addEllipsis();
+
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+      if (i !== 1 && i !== totalPages) {
+        pagination.innerHTML += createPageItem(i, currentPage === i);
+      }
     }
+
+    if (currentPage < totalPages - 3) pagination.innerHTML += addEllipsis();
+
+    if (totalPages > 1) pagination.innerHTML += createPageItem(totalPages, currentPage === totalPages);
 
     pagination.innerHTML += `
       <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-        <a class="page-link" href="#" onclick="changePage(${currentPage + 1}); return false;">Next</a>
+        <a class="page-link" href="#" onclick="changePage(${currentPage + 1}); return false;">Next »</a>
       </li>
     `;
   }
@@ -243,6 +302,7 @@
     if (page >= 1 && page <= totalPages) {
       renderPage(page);
       renderPagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 
@@ -261,6 +321,21 @@
     currentPlayingIndex = index;
     renderPage(currentPage);
   }
+
+  // Auto-collapse navbar on mobile when link is clicked
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const navbarCollapse = document.getElementById('navbarNav');
+    const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 992) {
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

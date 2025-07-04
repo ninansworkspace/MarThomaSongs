@@ -219,6 +219,9 @@
   const songsPerPage = 15;
   let currentPlayingIndex = null;
 
+  // ✅ Robust title fallback function
+  const getSongTitle = (song) => song["Filename"] || song["title"] || song["name"] || "Untitled";
+
   fetch(apiURL)
     .then(res => res.json())
     .then(data => {
@@ -246,10 +249,12 @@
 
     list.innerHTML = songsToDisplay.map((song, index) => {
       const globalIndex = start + index;
+      const title = getSongTitle(song);
+      const link = song["Drive Link"] || song.url || "#";
       return `
         <li class="list-group-item ${globalIndex === currentPlayingIndex ? 'active-song' : ''}" onclick="highlightSong(${globalIndex})">
-          <span class="song-title">${song["Filename"] || song.title}</span>
-          <a class="btn-open" href="${song["Drive Link"] || song.url}" target="_blank">Open</a>
+          <span class="song-title">${title}</span>
+          <a class="btn-open" href="${link}" target="_blank">Open</a>
         </li>
       `;
     }).join('');
@@ -306,11 +311,13 @@
     }
   }
 
+  // ✅ Updated with fallback title detection
   function filterSongs() {
     const searchTerm = document.getElementById("search").value.toLowerCase();
-    filteredSongs = allSongs.filter(song =>
-      (song["Filename"] || "").toLowerCase().includes(searchTerm)
-    );
+    filteredSongs = allSongs.filter(song => {
+      const title = getSongTitle(song);
+      return title.toLowerCase().includes(searchTerm);
+    });
     currentPage = 1;
     currentPlayingIndex = null;
     renderPage(currentPage);
@@ -337,6 +344,7 @@
     });
   });
 </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
